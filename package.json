@@ -1,6 +1,6 @@
 {
   "name": "rpgs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI based fully encrypted password manager and generator",
   "keywords": [
     "password",

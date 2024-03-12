@@ -13,7 +13,7 @@ const config = new Conf({ projectName: "rpgs" });
 
 fs.writeFileSync("./.labels.txt", "", { flag: "a+" });
 
-program.version("1.0.0", "-v, --version", "Display the version");
+program.version("1.0.1", "-v, --version", "Display the version");
 
 program
   .command("generate")
@@ -22,13 +22,13 @@ program
   .action(async (options) => {
     const password = generate();
     console.log(
-      `\n${colorText("Your new generated password is", 32)} ${password}`
+      `\n${colorText("Your new generated password is", 32)} ${password}`,
     );
     console.log(
       colorText(
         "\n\nCaution:\nDon't share this password with anyone else.\nSave this password in rpgs password manager for safety and better experience!\n",
-        33
-      )
+        33,
+      ),
     );
 
     console.log(colorText("Use the command below to save your password\n", 35));
@@ -45,11 +45,11 @@ program
   .action(() => {
     if (!config.get("username")) {
       console.log(
-        colorText("\n Please first initialize the password manager\n", 31)
+        colorText("\n Please first initialize the password manager\n", 31),
       );
 
       console.log(
-        colorText("Use the command below to initialize the manager\n", 35)
+        colorText("Use the command below to initialize the manager\n", 35),
       );
       console.log(colorText("\trpgs init\n", 37));
       return;
@@ -99,8 +99,8 @@ program
           console.log(
             colorText(
               "\nThe label already exits. Please use a different label to store the password\n",
-              31
-            )
+              31,
+            ),
           );
           return;
         }
@@ -122,11 +122,11 @@ program
   .action((options) => {
     if (!config.get("username")) {
       console.log(
-        colorText("\n Please first initialize the password manager\n", 31)
+        colorText("\n Please first initialize the password manager\n", 31),
       );
 
       console.log(
-        colorText("Use the command below to initialize the manager\n", 35)
+        colorText("Use the command below to initialize the manager\n", 35),
       );
       console.log(colorText("\trpgs init\n", 37));
       return;
@@ -148,7 +148,7 @@ program
         if (
           (await bcrypt.compare(
             credentials.managerUser,
-            config.get("username")
+            config.get("username"),
           )) == false
         ) {
           console.log(colorText("\nYour manager username is incorrect\n", 31));
@@ -158,7 +158,7 @@ program
         if (
           (await bcrypt.compare(
             credentials.managerPass,
-            config.get("password")
+            config.get("password"),
           )) == false
         ) {
           console.log(colorText("\nYour manager password is incorrect\n", 31));
@@ -176,29 +176,29 @@ program
           ])
           .then(async (answers) => {
             const encrypted_pass = config.get(
-              encrypt(answers.label, credentials.managerPass)
+              encrypt(answers.label, credentials.managerPass),
             );
 
             const pass = decrypt(encrypted_pass, credentials.managerPass);
             await clipboardy.write(pass);
 
             console.log(
-              colorText("\nYour password is successfully copied!!!\n", 32)
+              colorText("\nYour password is successfully copied!!!\n", 32),
             );
 
             if (options.print) {
               console.log(
                 colorText(
                   `\nThe password of your ${answers.label} account is : ${pass}\n`,
-                  37
-                )
+                  37,
+                ),
               );
             } else {
               console.log(
                 colorText(
                   "\nTo view the password, use the -p or --print flag with the command\n",
-                  33
-                )
+                  33,
+                ),
               );
             }
           });
@@ -235,5 +235,8 @@ program
       });
   });
 
-program.addHelpText("after", `this is a help doc`);
+program.addHelpText(
+  "before",
+  `\nHere is the list of commands that you can use:\n`,
+);
 program.parse();
