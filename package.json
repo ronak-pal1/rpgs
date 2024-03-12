@@ -1,0 +1,35 @@
+{
+  "name": "rpgs",
+  "version": "1.0.0",
+  "description": "A CLI based fully encrypted password manager and generator",
+  "keywords": [
+    "password",
+    "password manager",
+    "password saver",
+    "auth saver",
+    "secrets saver",
+    "secrets manager",
+    "rpgs"
+  ],
+  "main": "./index.js",
+  "type": "module",
+  "author": "Ronak Paul",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ronak-pal1/rpgs.git"
+  },
+  "homepage": "https://github.com/ronak-pal1/rpgs#readme",
+  "license": "MIT",
+  "bin": {
+    "rpgs": "./index.js"
+  },
+  "scripts": {},
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "clipboardy": "^4.0.0",
+    "commander": "^12.0.0",
+    "conf": "^12.0.0",
+    "inquirer": "^9.2.15",
+    "n-readlines": "^1.0.1"
+  }
+}
