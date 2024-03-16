@@ -2,7 +2,7 @@
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
-[![Npm package total downloads](https://badgen.net/npm/dt/express)](https://npmjs.com/package/rpgs)
+[![Npm package total downloads](https://badgen.net/npm/dt/rpgs)](https://npmjs.com/package/rpgs)
 
 > RPGS (Rapid Password Generator & Storer) is a convenient npm package designed to simplify password management directly from the command line interface (CLI). With RPGS, you can securely store and generate passwords, all without leaving your terminal. Say goodbye to the hassle of navigating between different applications to find or generate passwords.
 
@@ -31,6 +31,7 @@ v8.16.0
     - [Generating a random password](#generating-a-random-password)
     - [Saving a password with a label](#saving-a-password-with-a-label)
     - [Getting the passwords](#getting-the-passwords)
+    - [Deleting the passwords](#deleting-the-passwords)
     - [Version info](#version-info)
     - [Help](#help)
   - [Contributing](#contributing)
@@ -95,6 +96,18 @@ $ rpgs show --print
 ```
 
 > The -p or --print flag will not only copy the saved password but also print it to the terminal so that you can see it.
+
+### Deleting the passwords
+
+```sh
+$ rpgs delete
+```
+> To delete a specific password by selecting the label
+
+```sh
+$ rpgs reset
+```
+> To reset the whole manager. (This will delete all the passwords)
 
 ### Version info
 
