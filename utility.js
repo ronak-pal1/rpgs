@@ -1,10 +1,4 @@
 import { decrypt } from "./encryp-decrypt.js";
-import ReadLines from "n-readlines";
-
-const getRandom = (min, max) => {
-  // here min is included and max is excluded
-  return Math.floor(Math.random() * (max - min) + min);
-};
 
 export const colorText = (text, colorId) => {
   // red = 31
@@ -18,39 +12,58 @@ export const colorText = (text, colorId) => {
   return `\x1b[${colorId}m${text}\x1b[0m`;
 };
 
-export const isLabelExists = (encrypt_text) => {
-  const readLines = new ReadLines("./.labels.txt");
+export const addLabel = (config, encrypted_label) => {
+  const labels = config.get("labels") ? config.get("labels") : [];
 
-  let line;
+  labels.push(encrypted_label);
 
-  while ((line = readLines.next())) {
-    if (line.toString("ascii") === encrypt_text) {
-      return true;
-    }
+  config.set("labels", labels);
+};
+
+export const removeLabel = (config, encrypted_label) => {
+  let labels = config.get("labels");
+
+  labels = labels.filter((label) => label != encrypted_label);
+
+  config.set("labels", labels);
+};
+
+export const isLabelExists = (config, encrypted_label) => {
+  const labels = config.get("labels");
+  if (!labels) {
+    return false;
+  }
+
+  for (let i = 0; i < labels.length; i++) {
+    if (labels[i] === encrypted_label) return true;
   }
 
   return false;
 };
 
-export const listLabels = (pass) => {
-  const labels = [];
-  const readLines = new ReadLines("./.labels.txt");
+export const listLabels = (config, pass) => {
+  const encrypted_labels = config.get("labels");
+  if (!encrypted_labels) return [];
+  let decrypted_labels = [];
 
-  let line;
-  let keyId = 0;
-
-  while ((line = readLines.next())) {
-    const decryptedLabel = decrypt(line.toString("ascii"), pass);
-    labels.push({
-      key: String.fromCharCode(keyId + 97),
+  for (let i = 0; i < encrypted_labels.length; i++) {
+    const decryptedLabel = decrypt(encrypted_labels[i], pass);
+    decrypted_labels.push({
+      key: String.fromCharCode(i + 97),
       value: decryptedLabel,
     });
-    keyId++;
   }
 
-  return labels;
+  return decrypted_labels;
 };
 
+// The below function is for generating a random value in the range [min, max)
+const getRandom = (min, max) => {
+  // here min is included and max is excluded
+  return Math.floor(Math.random() * (max - min) + min);
+};
+
+// The below function is for generating a random password
 export const generate = () => {
   let pass = "";
 

@@ -1,5 +1,9 @@
 # rpgs.js
 
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
+[![Npm package total downloads](https://badgen.net/npm/dt/express)](https://npmjs.com/package/rpgs)
+
 > RPGS (Rapid Password Generator & Storer) is a convenient npm package designed to simplify password management directly from the command line interface (CLI). With RPGS, you can securely store and generate passwords, all without leaving your terminal. Say goodbye to the hassle of navigating between different applications to find or generate passwords.
 
 ## Prerequisites
@@ -61,11 +65,14 @@ $ rpgs init
 ```sh
 $ rpgs generate
 ```
+
 or
+
 ```sh
 $ rpgs generate -c
 $ rpgs generate --copy
 ```
+
 > The -c or --copy flag the copy the generated password.
 
 ### Saving a password with a label
@@ -79,11 +86,14 @@ $ rpgs save
 ```sh
 $ rpgs show
 ```
+
 or
+
 ```sh
 $ rpgs show -p
 $ rpgs show --print
 ```
+
 > The -p or --print flag will not only copy the saved password but also print it to the terminal so that you can see it.
 
 ### Version info
@@ -91,16 +101,21 @@ $ rpgs show --print
 ```sh
 $ rpgs -v
 ```
+
 or
+
 ```sh
 $ rpgs --version
 ```
+
 ### Help
 
 ```sh
 $ rpgs -h
 ```
+
 or
+
 ```sh
 $ rpgs --help
 ```
@@ -116,18 +131,15 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 5.  Push to the branch: `git push origin my-new-feature`
 6.  Submit a pull request :sunglasses:
 
-
 ## Built With
 
-* commader.js
-* inquirer.js
+- commader.js
+- inquirer.js
 
 ## Authors
 
-* **Ronak Paul** - *Initial work* - [ronak-pal1](https://github.com/ronak-pal1)
+- **Ronak Paul** - _Initial work_ - [ronak-pal1](https://github.com/ronak-pal1)
 
 ## License
 
 The license as stated in the LICENSE file.
-
-
